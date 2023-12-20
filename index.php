@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    include_once("classes/Connect.php");
+    $_SESSION['connect'] = new Connect();
+?>
+
 <html>
     <head>
         <!---PLUGINS/LIBRARIES--->
@@ -15,14 +21,14 @@
                 <div class="col-md-12" style="width:500px;">
                     <div class="row">
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-primary" onclick="get_rows()">get rows</button>
+                            <button type="button" class="btn btn-primary row_btn" onclick="get_rows()">get rows</button>
                         </div>
                         <div class="col-md-4">
                             <button type="button" class="btn btn-primary more_btn" onclick="get_more()">get more</button>
                         </div>
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-primary more_btn" onclick="show_less()">show less</button>
-                            <input class="less" size="6" maxlength="3" value="1"></input>
+                            <button type="button" class="btn btn-primary less_btn" onclick="show_less()">show less</button>
+                            <input class="less_input" size="6" maxlength="3" value="1"></input>
                         </div>
                     </div>
                 </div>
@@ -56,23 +62,3 @@
 
 </html>
 
-<script>
-
-</script>
-
-<?php
-
-
-
-//$test->get_initial();
-//$test->get_five();
-// $test->get_five();
-//var_dump($test->get_five());
-
-
-//$asdf = $test->get_five();
-// var_dump($asdf->fetch_all());
-//$asdf = $asdf->fetch_all();
-
-
-?>
