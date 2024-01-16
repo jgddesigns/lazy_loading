@@ -31,13 +31,13 @@ class Connect {
     }
 
 
-    function get_more(){
+    function get_more($num){
         $this->set_db();
         $conn = $this->conn;
         $floor_rows = $this->rows; 
-        $this->rows = $this->rows + 5;
+        $this->rows = $this->rows + $num;
         $ceil_rows = $this->rows;
-        return $conn->query('SELECT * FROM food WHERE id > '. $floor_rows. ' AND id <= '. $ceil_rows .' ORDER BY id ASC LIMIT 5 ')->fetch_all();
+        return $conn->query('SELECT * FROM food WHERE id > '. $floor_rows. ' AND id <= '. $ceil_rows .' ORDER BY id ASC LIMIT ' . $num)->fetch_all();
     }
 
 

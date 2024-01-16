@@ -11,3 +11,18 @@
     margin-top: 32px;
 }
 
+.more_message{
+    font-weight: bold;
+    margin-top: 12px;
+    font-size: 14px;
+    color: green;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.less_message{
+    font-weight: bold;
+    margin-top: 12px;
+    font-size: 14px;
+    color: orange;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

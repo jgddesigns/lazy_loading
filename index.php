@@ -24,11 +24,22 @@
                             <button type="button" class="btn btn-primary row_btn" onclick="get_rows()">get rows</button>
                         </div>
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-primary more_btn" onclick="get_more()">get more</button>
+                            <div class="row">
+                                <button type="button" class="btn btn-primary more_btn" onclick="get_more()">get more</button>
+                                <input class="more_input" size="6" maxlength="3" value="1"></input>
+                            </div>
+                            <div class="row">
+                                <span class="more_message"></span>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-primary less_btn" onclick="show_less()">show less</button>
-                            <input class="less_input" size="6" maxlength="3" value="1"></input>
+                            <div class="row">
+                                <button type="button" class="btn btn-primary less_btn" onclick="show_less()">show less</button>
+                                <input class="less_input" size="6" maxlength="3" value="1"></input>
+                            </div>
+                            <div class="row">
+                                <span class="less_message"></span>
+                            </div>
                         </div>
                     </div>
                 </div>

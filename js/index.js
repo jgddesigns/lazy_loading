@@ -5,17 +5,9 @@ $(document).ready(function(){
 
     toggle_class(".more_btn", false, more_class)
     toggle_class(".less_btn", false, less_class)
+    $(".more_input").attr("disabled", true)
     $(".less_input").attr("disabled", true)
 
-    $(".less_input").keyup(function(){
-        if(this.value > get_count_ui()){
-            this.value = get_count_ui()
-        }
-
-        if(this.value < 1){
-            this.value = 1
-        }
-    })
 })
 
 function toggle_class(txt, val, set){
@@ -60,13 +52,18 @@ function display_initial(data){
         }
         string = string + "</div>"
     }
+
     $(".data").html(string)
     toggle_class(".row_btn", false, row_class)
     toggle_class(".more_btn", true, more_class)
     toggle_class(".less_btn", true, less_class)
-    $(".less_input").show()
+
+    $(".more_input").val("1")
     $(".less_input").val("1")
+    $(".more_input").attr("disabled", false)
     $(".less_input").attr("disabled", false)
+    $(".more_message").html("")
+    $(".less_message").html("")
 }
 
 
@@ -74,14 +71,19 @@ function get_more(){
     $.ajax({
         url: './classes/Bridge.php',
         method: 'POST',
-        data: { action: 'get_more' },
+        data: { action: 'get_more', variableName: $('.more_input').val() },
         success: function(response){
             data = JSON.parse(response)
             display_more(data)
 
             if(get_count_ui() == 35){
                 toggle_class(".more_btn", false, more_class)
+                $(".more_message").html("All rows displayed")
+            }else{
+                $(".more_message").html($('.more_input').val() + " rows displayed")
+                $(".less_message").html("")
             }
+
         },
         error: function(xhr, status, error){
             console.error('Error:', error);
@@ -107,6 +109,8 @@ function display_more(data){
 
 
 function show_less(){
+    $(".more_message").html("")
+    $(".less_message").html("Removed " + $(".less_input").val() + " rows")
     if($(".less_input").val()){
         remove = $(".less_input").val()
         count = get_count_ui()
@@ -123,8 +127,13 @@ function show_less(){
         toggle_class(".row_btn", true, row_class)
         toggle_class(".more_btn", false, more_class)
         toggle_class(".less_btn", false, less_class)
+        $(".more_input").val("1")
         $(".less_input").val("1")
+        $(".more_input").attr("disabled", true)
         $(".less_input").attr("disabled", true)
+        $(".less_message").html("Removed all rows")
+    }else{
+        $(".less_message").html("Removed " + $(".less_input").val() + " rows")
     }
 
     if(get_count_ui() > 0 && get_count_ui() < 35){
