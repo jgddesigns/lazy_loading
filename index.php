@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 data" style="width:500px;">
+                <div class="col-md-12 data" style="width:500px; height: 1200px; overflow-y: auto;">
                     <div class="row headings">
                         <div class="col-md-2">
                             <span>NAME</span>
